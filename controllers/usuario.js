@@ -142,7 +142,22 @@ const usuarioControllers = {
         }catch (error){
             res.status(400).json(error)
         } 
-    }
+    },
+
+    traerImagenesCloud: async (req,res) => {
+        const {id} = req.params;
+        try {
+            let usuario = await Usuario.findOne({_id:id});
+            if(usuario.foto){
+                return res.json({url:usuario.foto})
+
+            }
+            res.status(400).json({msg:'Falta imagen'})
+            
+        } catch (error) {
+            res.status(400).json({error})
+        }
+    },
 }
 
 export default usuarioControllers

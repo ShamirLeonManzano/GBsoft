@@ -24,4 +24,6 @@ router.put('/activar/:id',usuarioControllers.usuarioPutActivar);
 
 router.put('/desactivar/:id',usuarioControllers.usuarioPutDesactivar);
 
+router.get('/uploadCloud/:id',[],usuarioControllers.traerImagenesCloud)
+
 export default router;
