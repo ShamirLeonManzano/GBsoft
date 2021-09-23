@@ -1,10 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dbConnection from '../database/config.js';
-// import grupoBiblico from '..routes/grupoBiblico.js';
 import usuario from '../routes/usuario.js'
-import iglesia from '../routes/iglesia.js'
 import fileUpload from 'express-fileupload'
+import iglesia from '../routes/iglesia.js'
+import red from '../routes/red.js'
+import subRed from '../routes/subRed.js'
+import grupoBiblico from '../routes/grupoBiblico.js';
+import directorio from '../routes/directorio.js';
+import publicacion from '../routes/publicacion.js'
 
 
 
@@ -19,9 +23,13 @@ class Server {
     }
 
     routes(){
-        // this.app.use('/api/grupobiblico',   grupoBiblico)
         this.app.use('/api/usuario',usuario)
         this.app.use('/api/iglesia',iglesia)
+        this.app.use('/api/red',red)
+        this.app.use('/api/subRed',subRed) 
+        this.app.use('/api/grupoBiblico',grupoBiblico)
+        this.app.use('/api/directorio',directorio)
+        this.app.use('/api/publicacion', publicacion)
     }
 
     async connectionDb(){

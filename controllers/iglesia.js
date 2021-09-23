@@ -28,7 +28,7 @@ const iglesiaControllers = {
         const { codigo, estado } = req.body;
         const iglesia = Iglesia({ codigo, estado });
 
-        glesia.save();
+        await iglesia.save();
 
         res.json({
             iglesia

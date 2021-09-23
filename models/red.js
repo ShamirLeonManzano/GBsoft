@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-const redSchema = moongose.Schema({
-    codigo : {type: String, required:true, maxlength:50, unique:true},
+const redSchema = mongoose.Schema({
+    codigo : {type: String, required:true, maxlength:50},
     estado : {type:Number, default:1},
-    iglesia: { type: mongoose.Schema.Types.ObjectId, ref: `Iglesia`, require: true },
+    iglesia: {type: mongoose.Schema.Types.ObjectId, ref: `Iglesia`, require: true },
+    felipeS: {type: mongoose.Schema.Types.ObjectId, ref: `Usuario`, require: true },
+    foto: {type: String},
 })
 
-export default mongoose.model('Red', redSchema)
+export default mongoose.model('Red', redSchema) 

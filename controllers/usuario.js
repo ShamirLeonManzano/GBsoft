@@ -4,7 +4,8 @@ import subirArchivo from "../helpers/subir-archivo.js";
 import * as fs from 'fs'
 import path from 'path'
 import url from 'url'
-import cloudinary from 'cloudinary' 
+import cloudinary from 'cloudinary'
+import { generarJWT } from '../middlewares/validar-jwt.js'
 
 cloudinary.config(process.env.CLOUDINARY_URL)
 
@@ -157,6 +158,38 @@ const usuarioControllers = {
         } catch (error) {
             res.status(400).json({error})
         }
+    },
+
+    login: async (req,res) => {
+        const {email, password}=req.body;
+
+        const usuario = await Usuario.findOne({email})
+
+        if(!usuario){
+            return res.json({
+                msg:`Usuario/Password no son correctos email`
+            })
+        }
+        if (usuario.estado===0){
+            return res.json({
+                msg:`Usuario/Password no son correctos estado`
+            })
+        }
+        const validarPassword=bcryptjs.compareSync(password, usuario.password);
+        if (! validarPassword){
+            return res.json({
+                msg:`Usuario/Password no son correctos `
+            }) 
+        }
+
+        const token = await generarJWT(usuario.id);
+
+        return res.json({
+           usuario,
+           token
+        })
+            
+        
     },
 }
 

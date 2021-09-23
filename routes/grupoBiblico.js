@@ -1,15 +1,18 @@
 import {Router} from 'express';
+import grupoBiblicoControllers from '../controllers/grupoBiblico.js'; 
 
 const router = Router ();
 
-router.get('/');
+router.get('/',grupoBiblicoControllers.grupoBiblicoGet);
 
-router.post('/');
+router.get('/:id',grupoBiblicoControllers.grupoBiblicoGetById);
 
-router.put('/');
+router.post('/',grupoBiblicoControllers.grupoBiblicoPost);
 
-router.put('/activar');
+router.put('/:id',grupoBiblicoControllers.grupoBiblicoPut);
 
-router.put('/desactivar');
+router.put('/activar/:id',grupoBiblicoControllers.grupoBiblicoPutActivar);
+
+router.put('/desactivar/:id',grupoBiblicoControllers.grupoBiblicoPutDesactivar);
 
 export default router;
