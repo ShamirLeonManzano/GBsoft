@@ -8,4 +8,16 @@ const existeUsuarioById = async (id ) =>{
     }
 }
 
-export{existeUsuarioById}
+const existeUsuarioByCodigo = async (codigo) => {
+    const existe = await Usuario.findOne({codigo})
+
+    if(existe) throw new Error('Ya existe usuario con este código')
+}
+
+const existeUsuarioByEmail = async (email) => {
+    const existe = await Usuario.findOne({email})
+
+    if(existe) throw new Error('Ya existe usuario con este email')
+}
+
+export{existeUsuarioById, existeUsuarioByCodigo,existeUsuarioByEmail}

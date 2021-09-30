@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import path from 'path'
 import url from 'url'
 
-const subirArchivo=(files, extensionesValidas=['png','jpg', 'jpeg', 'gif'])=>{
+const subirArchivo=(files, extensionesValidas=['png','jpg', 'jpeg', 'gif', 'pdf'])=>{
     return new Promise( (resolve, reject)=>{
         const {archivo}= files;               
         const nombreCortado = archivo.name.split('.');

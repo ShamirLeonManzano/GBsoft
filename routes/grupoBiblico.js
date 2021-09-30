@@ -1,18 +1,30 @@
 import {Router} from 'express';
 import grupoBiblicoControllers from '../controllers/grupoBiblico.js'; 
-
+import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router ();
 
-router.get('/',grupoBiblicoControllers.grupoBiblicoGet);
+router.get('/',[
+    validarJWT
+],grupoBiblicoControllers.grupoBiblicoGet);
 
-router.get('/:id',grupoBiblicoControllers.grupoBiblicoGetById);
+router.get('/:id',[
+    validarJWT
+],grupoBiblicoControllers.grupoBiblicoGetById);
 
-router.post('/',grupoBiblicoControllers.grupoBiblicoPost);
+router.post('/',[
+    validarJWT
+],grupoBiblicoControllers.grupoBiblicoPost);
 
-router.put('/:id',grupoBiblicoControllers.grupoBiblicoPut);
+router.put('/:id',[
+    validarJWT
+],grupoBiblicoControllers.grupoBiblicoPut);
 
-router.put('/activar/:id',grupoBiblicoControllers.grupoBiblicoPutActivar);
+router.put('/activar/:id',[
+    validarJWT
+],grupoBiblicoControllers.grupoBiblicoPutActivar);
 
-router.put('/desactivar/:id',grupoBiblicoControllers.grupoBiblicoPutDesactivar);
+router.put('/desactivar/:id',[
+    validarJWT
+],grupoBiblicoControllers.grupoBiblicoPutDesactivar);
 
 export default router;

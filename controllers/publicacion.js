@@ -1,4 +1,6 @@
-import Publicacion from '../models/publicacion.js'
+import Publicacion from '../models/publicacion.js';
+import cloudinary from 'cloudinary';
+
 
 const publicacionControllers = {
     publicacionGet: async (req, res) => {
@@ -63,6 +65,42 @@ const publicacionControllers = {
         res.json({
             publicacion
         })
+    },
+
+    cargarArchivoCloud: async (req,res) => {
+        const {id} = req.params;
+        try{            
+            const {tempFilePath}=req.files.archivo 
+            const {secure_url} = await cloudinary.uploader.upload(tempFilePath)           
+            
+            let publicacion = await Publicacion.findById(id);            
+            if(publicacion.archivo){
+                const nombreTemp=publicacion.archivo.split('/')
+                const nombreArchivo=nombreTemp[nombreTemp.length-1]
+                const [public_id] = nombreArchivo.split('.')
+                cloudinary.uploader.destroy(public_id)
+               
+            }
+            publicacion = await Publicacion.findByIdAndUpdate(id,{archivo:secure_url})
+            res.json({secure_url});
+        }catch (error){
+            res.status(400).json(error)
+        } 
+    },
+
+    traerImagenesCloud: async (req,res) => {
+        const {id} = req.params;
+        try {
+            let publicacion = await Publicacion.findOne({_id:id});
+            if(publicacion.archivo){
+                return res.json({url:publicacion.archivo})
+
+            }
+            res.status(400).json({msg:'Falta Archivo'})
+            
+        } catch (error) {
+            res.status(400).json({error})
+        }
     },
 }
 

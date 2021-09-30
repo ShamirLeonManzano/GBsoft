@@ -1,4 +1,8 @@
 import Red from "../models/red.js"
+import cloudinary from 'cloudinary'
+
+
+cloudinary.config(process.env.CLOUDINARY_URL)
 
 const redControllers = {
 
@@ -68,6 +72,43 @@ const redControllers = {
         res.json({
             red
         })
+    },
+
+    cargarArchivoCloud: async (req,res) => {
+        const {id} = req.params;
+        try{            
+            const {tempFilePath}=req.files.archivo 
+            const {secure_url} = await cloudinary.uploader.upload(tempFilePath)           
+            
+            let red = await Red.findById(id);
+             
+            if(red.foto){
+                const nombreTemp=red.foto.split('/')
+                const nombreArchivo=nombreTemp[nombreTemp.length-1]
+                const [public_id] = nombreArchivo.split('.')
+                cloudinary.uploader.destroy(public_id)
+               
+            }
+            red = await Red.findByIdAndUpdate(id,{foto:secure_url})
+            res.json({secure_url});
+        }catch (error){
+            res.status(400).json(error)
+        } 
+    },
+
+    traerImagenesCloud: async (req,res) => {
+        const {id} = req.params;
+        try {
+            let red = await Red.findOne({_id:id});
+            if(red.foto){
+                return res.json({url:red.foto})
+
+            }
+            res.status(400).json({msg:'Falta Imagen'})
+            
+        } catch (error) {
+            res.status(400).json({error})
+        }
     },
 }
 

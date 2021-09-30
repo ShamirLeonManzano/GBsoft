@@ -1,18 +1,31 @@
 import {Router} from 'express';
 import iglesiaControllers from '../controllers/iglesia.js';
+import { validarJWT } from '../middlewares/validar-jwt.js';
 
 const router = Router ();
 
-router.get('/',iglesiaControllers.iglesiaGet);
+router.get('/',[
+    validarJWT
+],iglesiaControllers.iglesiaGet);
 
-router.get('/:id',iglesiaControllers.iglesiaGetById);
+router.get('/:id',[
+    validarJWT
+],iglesiaControllers.iglesiaGetById);
 
-router.post('/',iglesiaControllers.iglesiaPost);
+router.post('/',[
+    validarJWT
+],iglesiaControllers.iglesiaPost);
 
-router.put('/:id',iglesiaControllers.iglesiaPut);
+router.put('/:id',[
+    validarJWT
+],iglesiaControllers.iglesiaPut);
 
-router.put('/activar/:id',iglesiaControllers.iglesiaPutActivar);
+router.put('/activar/:id',[
+    validarJWT
+],iglesiaControllers.iglesiaPutActivar);
 
-router.put('/desactivar/:id',iglesiaControllers.iglesiaPutDesactivar);
+router.put('/desactivar/:id',[
+    validarJWT
+],iglesiaControllers.iglesiaPutDesactivar);
 
 export default router;

@@ -16,7 +16,7 @@ const generarJWT=(uid)=>{
             }
         })
     })
-}
+} 
 
 const validarJWT = async(req,res,next)=>{
      const token = req.header('token')
