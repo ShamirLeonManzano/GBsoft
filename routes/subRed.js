@@ -11,9 +11,10 @@ const router = Router ();
 router.post('/',[
     validarJWT,
     check('codigo', 'El código es obligatorio').notEmpty(),
-    check('red', 'El red es obligatorio').notEmpty(),
+    check('red', 'El Id de red es obligatorio').notEmpty(),
     check('felipeR', 'El felipe de Red es obligatorio').notEmpty(),
-    check('codigo').custom(existeSubRedByCodigo),    
+    check('titulo', 'El titulo es obligatorio').notEmpty(),
+    check('codigo').custom(existeSubRedByCodigo,),     
     validarCampos,
 ],subRedControllers.subRedPost);
 
@@ -42,9 +43,11 @@ router.put('/:id',[
     check('codigo', 'El código es obligatorio').notEmpty(),
     check('red', 'El red es obligatorio').notEmpty(),
     check('felipeR', 'El felipe de Red es obligatorio').notEmpty(),
+    check('titulo', 'El titulo es obligatorio').notEmpty(),
     check('codigo').custom(existeSubRedByCodigo), 
     check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom(existeSubRedById),   
+    check('id').custom(existeSubRedById),
+      
     validarCampos,
 ],subRedControllers.subRedPut);
 

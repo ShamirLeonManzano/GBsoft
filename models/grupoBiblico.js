@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const grupobiblicoSchema = mongoose.Schema({
+    titulo : {type: String, required:true, maxlength:50, },
     codigo : {type: String, required:true, maxlength:50, unique:true},
     direccion : {type: String, required:true, maxlength:50},
     telefono : {type: String, required:true, maxlength:50},

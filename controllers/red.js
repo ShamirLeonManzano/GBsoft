@@ -33,8 +33,8 @@ const redControllers = {
     },
 
     redPost: async (req,res) => {
-        const {codigo, iglesia, felipeS} = req.body;
-        const red = Red({codigo, iglesia ,felipeS });
+        const { titulo, codigo, iglesia, felipeS} = req.body;
+        const red = Red({titulo, codigo, iglesia ,felipeS });
 
         await red.save();
 

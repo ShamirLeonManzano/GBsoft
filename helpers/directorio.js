@@ -7,8 +7,9 @@ const existeDirectorioById = async (id) => {
     if(!existe) throw new Error('El ID no existe')
 }
 
-const existeDirectorioByGbId = async (id) => {
-    const existe = await GrupoBiblico.findById(id)   
+const existeDirectorioByGbId = async (gBiblico) => {
+    console.log(gBiblico);
+    const existe = await GrupoBiblico.findById(gBiblico)   
     if(!existe) throw new Error('El ID de Gb no existe')
 }
 

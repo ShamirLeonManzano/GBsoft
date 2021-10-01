@@ -29,6 +29,7 @@ router.post('/',[
     check('felipeS', 'El felipeS es obligatorio').notEmpty(),
     check('felipeS', 'No es un ID válido').isMongoId(),
     check('felipeS').custom(existeRedByUserId),
+    check('titulo', 'El titulo es obligatorio').notEmpty(),
     validarCampos
 ],redControllers.redPost);
 

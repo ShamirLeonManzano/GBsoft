@@ -9,7 +9,6 @@ const existeRedById = async (id) => {
 
 const existeRedByCodigo = async (codigo) => {
     const existe = await Red.findOne({codigo})
-
     if(existe) throw new Error('Ya existe Red con este código')
 }
 

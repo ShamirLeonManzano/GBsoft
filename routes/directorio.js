@@ -46,7 +46,7 @@ router.put('/:id',[
     check('email','El email es obligatorio').notEmpty(),
     check('nombre').custom(existePersonaByNombre),
     check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom(existeDirectorioByGbId),
+    check('gBiblico').custom(existeDirectorioByGbId),
     validarCampos
 ],perDirectorioControllers.perDirectorioPut);
 

@@ -42,8 +42,8 @@ const subRedControllers = {
     },
 
     subRedPost: async (req, res)=>{
-        const { codigo, estado, red, felipeR } = req.body;
-        const subRed = SubRed({ codigo, estado, red, felipeR });
+        const { titulo, codigo, estado, red, felipeR } = req.body;
+        const subRed = SubRed({ titulo, codigo, estado, red, felipeR });
 
         await subRed.save();
 

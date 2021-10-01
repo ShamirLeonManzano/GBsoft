@@ -1,31 +1,52 @@
 import {Router} from 'express';
 import iglesiaControllers from '../controllers/iglesia.js';
 import { validarJWT } from '../middlewares/validar-jwt.js';
+import { validarCampos } from '../middlewares/validar-campos.js';
+import { existeIglesiaById, existeIglesiaByCod } from '../helpers/iglesia.js';
+import { check } from 'express-validator'
 
 const router = Router ();
 
 router.get('/',[
-    validarJWT
+    validarJWT, 
+    validarCampos
 ],iglesiaControllers.iglesiaGet);
 
 router.get('/:id',[
-    validarJWT
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeIglesiaById),
+    validarCampos
 ],iglesiaControllers.iglesiaGetById);
 
 router.post('/',[
-    validarJWT
+    validarJWT,
+    check('codigo', 'El codigo es obligatorio').notEmpty(),
+    check('codigo').custom(existeIglesiaByCod),
+    validarCampos
 ],iglesiaControllers.iglesiaPost);
 
 router.put('/:id',[
-    validarJWT
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeIglesiaById),
+    check('codigo','El codigo es obligatorio').notEmpty(),
+    check('codigo').custom(existeIglesiaByCod),
+    validarCampos
 ],iglesiaControllers.iglesiaPut);
 
 router.put('/activar/:id',[
-    validarJWT
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeIglesiaById),
+    validarCampos
 ],iglesiaControllers.iglesiaPutActivar);
 
 router.put('/desactivar/:id',[
-    validarJWT
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeIglesiaById),
+    validarCampos
 ],iglesiaControllers.iglesiaPutDesactivar);
 
 export default router;

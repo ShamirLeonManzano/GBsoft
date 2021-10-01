@@ -28,10 +28,19 @@ const grupoBiblicoControllers = {
             grupoBiblico
         })
     },
+
+    grupobiblicoGetByUser: async (req, res) => {
+        const { id } = req.params
+        const grupoBiblico = await GrupoBiblico.find({felipeG:id}) 
+
+        res.json({
+            grupoBiblico
+        })
+    },
     
     grupoBiblicoPost: async (req, res) => {
-        const {codigo, direccion, felipeG,telefono,red, subRed} = req.body;
-        const grupo = GrupoBiblico({codigo, direccion,felipeG,telefono,red, subRed});
+        const {titulo, codigo, direccion, felipeG,telefono,red, subRed} = req.body;
+        const grupo = GrupoBiblico({titulo, codigo, direccion,felipeG,telefono,red, subRed});
 
         await grupo.save();
 
