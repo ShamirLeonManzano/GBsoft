@@ -9,7 +9,7 @@ import subRed from '../routes/subRed.js'
 import grupoBiblico from '../routes/grupoBiblico.js';
 import directorio from '../routes/directorio.js';
 import publicacion from '../routes/publicacion.js'
-
+import informe from '../routes/informe.js';
 
 
 
@@ -30,6 +30,7 @@ class Server {
         this.app.use('/api/grupoBiblico',grupoBiblico)
         this.app.use('/api/directorio',directorio)
         this.app.use('/api/publicacion', publicacion)
+        this.app.use('/api/informe', informe)
     }
 
     async connectionDb(){
@@ -54,6 +55,7 @@ class Server {
         });
     }
 }
+
 
 export default Server
 
