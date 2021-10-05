@@ -26,8 +26,11 @@ const informeControllers = {
     },
 
     informePost : async (req, res) => {
-        const {usuario, codigo, tipo, totalAm, totalC, totalAD, totalF, total,detalle} = req.body
-        const informe = Informe({usuario, codigo, tipo, totalAm, totalC, totalAD, totalF, total,detalle})
+        const {usuario, codigo, tipo, totalAm, totalC, totalAD, totalF, total, fGrupo, fAyudante, fAnfitrion,fMaestro, felipes, discipulos, amigosA, niñosA, reconciliados, nuevos, adultos,           
+        niñosC, hermanos , amigosAD, niñosAD, diezmo, ofrenda, otros, } = req.body
+
+        const informe = Informe({usuario, codigo, tipo, totalAm, totalC, totalAD, totalF, total, fGrupo, fAyudante, fAnfitrion,fMaestro, felipes, discipulos, amigosA, niñosA, reconciliados, nuevos, adultos,           
+        niñosC, hermanos, amigosAD, niñosAD, diezmo, ofrenda, otros,})
 
         await informe.save();
 

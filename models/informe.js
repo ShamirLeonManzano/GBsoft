@@ -10,27 +10,26 @@ const informeSchema = mongoose.Schema({
     totalC : { type: Number },
     totalAD :{ type: Number },
     totalF : { type: Number },
-    total: { type: Number },
-    detalle: [{
-        fGrupo: {type: Number, required: true }, // 1 - 0 
-        fAyudante: {type: Number, required: true }, // 1 - 0 
-        fAnfitrion: {type: Number, required: true }, // 1 - 0 
-        fMaestro: {type: Number, required: true }, // 1 - 0 
-        felipes: {type: Number, required: true }, 
-        discipulos : {type: Number, required: true },
-        amigosA : {type: Number, required: true },
-        niñosA : {type: Number, required: true },
-        reconciliados : {type: Number, required: true },
-        nuevos : {type: Number, required: true },        
-        adultos: {type: Number, required: true },
-        niñosC: {type: Number, required: true },        
-        hermanos : {type: Number, required: true },
-        amigosAD : {type: Number, required: true },
-        niñosAD: {type: Number, required: true },        
-        diezmo : {type: Number, required: true },
-        ofrenda: {type: Number, required: true },        
-        otros: {type: Number, required: true },
-    }]
+    total: { type: Number },    
+    fGrupo: {type: Number, required: true }, // 1 - 0 
+    fAyudante: {type: Number, required: true }, // 1 - 0 
+    fAnfitrion: {type: Number, required: true }, // 1 - 0 
+    fMaestro: {type: Number, required: true }, // 1 - 0 
+    felipes: {type: Number, required: true }, 
+    discipulos : {type: Number, required: true },
+    amigosA : {type: Number, required: true },
+    niñosA : {type: Number, required: true },
+    reconciliados : {type: Number, required: true },
+    nuevos : {type: Number, required: true },        
+    adultos: {type: Number, required: true },
+    niñosC: {type: Number, required: true },        
+    hermanos : {type: Number, required: true },
+    amigosAD : {type: Number, required: true },
+    niñosAD: {type: Number, required: true },        
+    diezmo : {type: Number, required: true },
+    ofrenda: {type: Number, required: true },        
+    otros: {type: Number, required: true },
+   
 })
 
 export default mongoose.model('Informe', informeSchema)
