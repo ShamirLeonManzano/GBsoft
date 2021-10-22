@@ -41,7 +41,7 @@ const existeUsuarioById = async (usuario) =>{
 }
 
 const existeGbById = async (iDL) =>{    
-    const existe = await Usuario.findById(iDL)
+    const existe = await GrupoBiblico.findById(iDL)
     if(!existe){
         throw new Error (`El ID no existe`)
     }
