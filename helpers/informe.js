@@ -1,5 +1,6 @@
 import Informe from "../models/informe.js";
 import Usuario from "../models/usuario.js"
+import GrupoBiblico from "../models/grupoBiblico.js"
 
 const existeInformeById = async (id) => {
 
@@ -30,6 +31,8 @@ const existeInformeByCod = async (codigo) => {
 
 }
 
+
+
 const existeUsuarioById = async (usuario) =>{    
     const existe = await Usuario.findById(usuario)
     if(!existe){
@@ -37,4 +40,11 @@ const existeUsuarioById = async (usuario) =>{
     }
 }
 
-export {existeInformeById, existeTipo, existeInformeByCod, existeUsuarioById}
+const existeGbById = async (iDL) =>{    
+    const existe = await Usuario.findById(iDL)
+    if(!existe){
+        throw new Error (`El ID no existe`)
+    }
+}
+
+export {existeInformeById, existeTipo, existeInformeByCod, existeUsuarioById, existeGbById}

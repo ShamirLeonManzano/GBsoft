@@ -12,8 +12,8 @@ const grupoBiblicoControllers = {
             })
             .populate('red','codigo')
             .populate('subRed','codigo')
-            .populate('usuario','nombre')
-            .sort({ 'codigo': -1 })
+            .populate('felipeG','nombre')
+            .sort({ 'codigo': -1 }) 
 
         res.json({
             grupoBiblico

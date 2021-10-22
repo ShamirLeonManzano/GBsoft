@@ -24,12 +24,19 @@ const informeControllers = {
             informe
         })
     },
+    informeGetByIDL: async (req, res) => {
+        const { id } = req.params;
+        const informe = await Informe.findOne({ iDL : id })
+        res.json({
+            informe
+        })
+    },
 
     informePost : async (req, res) => {
-        const {usuario, codigo, tipo, totalAm, totalC, totalAD, totalF, total, fGrupo, fAyudante, fAnfitrion,fMaestro, felipes, discipulos, amigosA, niñosA, reconciliados, nuevos, adultos,           
+        const {usuario, iDL, codigo, tipo, totalAm, totalC, totalAD, totalF, total, fGrupo, fAyudante, fAnfitrion,fMaestro, felipes, discipulos, amigosA, niñosA, reconciliados, nuevos, adultos,           
         niñosC, hermanos , amigosAD, niñosAD, diezmo, ofrenda, otros, } = req.body
 
-        const informe = Informe({usuario, codigo, tipo, totalAm, totalC, totalAD, totalF, total, fGrupo, fAyudante, fAnfitrion,fMaestro, felipes, discipulos, amigosA, niñosA, reconciliados, nuevos, adultos,           
+        const informe = Informe({usuario, iDL, codigo, tipo, totalAm, totalC, totalAD, totalF, total, fGrupo, fAyudante, fAnfitrion,fMaestro, felipes, discipulos, amigosA, niñosA, reconciliados, nuevos, adultos,           
         niñosC, hermanos, amigosAD, niñosAD, diezmo, ofrenda, otros,})
 
         await informe.save();

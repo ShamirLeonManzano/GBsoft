@@ -15,7 +15,7 @@ const redControllers = {
                 ]
             })
             .populate('iglesia','codigo')
-            .populate('usuario','nombre')
+            .populate('felipeS','nombre')
             .sort({ 'codigo': -1 })
 
         res.json({

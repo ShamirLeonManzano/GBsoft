@@ -14,8 +14,8 @@ const subRedControllers = {
                     { codigo: new RegExp(value, 'i') },
                 ]
             })
-            .populate('iglesia','codigo')
-            .populate('usuario','nombre')
+            .populate('red','codigo')
+            .populate('felipeR','nombre')
             .sort({ 'codigo': -1 })
 
         res.json({

@@ -27,11 +27,11 @@ router.get('/user/:id',[
 
 router.post('/',[
     validarJWT,
-    check('titulo','El titulo es obligatorio').notEmpty(),
     check('codigo','El codigo es obligatorio').notEmpty(),
     check('codigo').custom(existeGrupoByCod), 
-    check('direccion','La direccion es obligatoria').notEmpty(),
+    check('titulo','El titulo es obligatorio').notEmpty(),
     check('telefono','El telefono es obligatorio').notEmpty(),
+    check('direccion','La direccion es obligatoria').notEmpty(),
     check('red','El id de Red es obligatorio').notEmpty(),
     check('red','El id no es válido').isMongoId(),
     check('red').custom(existeRedById), 

@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 const informeSchema = mongoose.Schema({
     usuario : { type: mongoose.Schema.Types.ObjectId, ref: `Usuario`, required: true },
+    iDL : { type: mongoose.Schema.Types.ObjectId, ref: `GrupoBiblico`, required: true },
     codigo : {type: String, required:true, maxlength:50, unique:true},
     tipo : { type: String, required: true, maxlength: 20 }, // GB - SB - R - IGL
     estado : {type:Number, default:1},
