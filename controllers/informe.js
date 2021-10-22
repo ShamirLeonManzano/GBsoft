@@ -26,7 +26,7 @@ const informeControllers = {
     },
     informeGetByIDL: async (req, res) => {
         const { id } = req.params;
-        const informe = await Informe.findOne({ iDL : id })
+        const informe = await Informe.find({ iDL : id })
         res.json({
             informe
         })
