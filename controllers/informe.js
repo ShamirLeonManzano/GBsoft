@@ -27,9 +27,11 @@ const informeControllers = {
     informeGetByIDL: async (req, res) => {
         const { id } = req.params;
         const informe = await Informe.find({ iDL : id })
+
         res.json({
             informe
         })
+        .populate('usuario','nombre') 
     },
 
     informePost : async (req, res) => {
