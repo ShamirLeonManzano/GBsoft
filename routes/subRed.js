@@ -27,8 +27,7 @@ router.get('/:id',[
     validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeSubRedById),
-    validarCampos
-    
+    validarCampos    
 ],subRedControllers.subRedGetById);
 
 router.get('/red/:id',[

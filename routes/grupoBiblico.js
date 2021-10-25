@@ -18,6 +18,13 @@ router.get('/:id',[
     validarCampos
 ],grupoBiblicoControllers.grupoBiblicoGetById);
 
+router.get('/subRedId/:id',[
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    // check('id').custom(existeGbById),
+    validarCampos
+],grupoBiblicoControllers.grupoBiblicoGetByIdSubR); 
+
 router.get('/user/:id',[
     validarJWT,
     check('id', 'No es un ID válido').isMongoId(),

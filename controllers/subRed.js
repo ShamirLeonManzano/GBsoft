@@ -21,7 +21,7 @@ const subRedControllers = {
         res.json({
             subRed
         })
-    },
+    }, 
 
     subRedGetById: async (req, res) => {
         const { id } = req.params
@@ -34,7 +34,10 @@ const subRedControllers = {
 
     subRedGetByRed: async (req, res) => {
         const { id } = req.params
-        const subRed = await SubRed.find({red:id}) 
+        const subRed = await SubRed.find({red:id})
+        .populate('red','codigo')
+        .populate('felipeR','nombre')
+        .sort({ 'codigo': -1 })  
 
         res.json({
             subRed

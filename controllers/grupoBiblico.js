@@ -20,6 +20,20 @@ const grupoBiblicoControllers = {
         })
     },
 
+    grupoBiblicoGetByIdSubR: async (req, res) => {
+        const { id } = req.params;
+        const grupoBiblico = await GrupoBiblico
+        .find({ subRed : id })
+        .populate('red','codigo')
+        .populate('subRed','codigo')
+        .populate('felipeG','nombre')
+        .sort({ 'codigo': -1 })  
+
+        res.json({
+            grupoBiblico
+        })
+    },
+
     grupoBiblicoGetById: async (req, res) => {
         const { id } = req.params
         const grupoBiblico = await GrupoBiblico.findById(id)
