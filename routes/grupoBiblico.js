@@ -32,6 +32,13 @@ router.get('/user/:id',[
     validarCampos
 ],grupoBiblicoControllers.grupobiblicoGetByUser);
 
+router.post('/uploadCloud/:id',[
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeGrupoByGbId),
+    validarCampos
+],grupoBiblicoControllers.cargarArchivoCloud);
+
 router.post('/',[
     validarJWT,
     check('codigo','El codigo es obligatorio').notEmpty(),
@@ -85,5 +92,12 @@ router.put('/desactivar/:id',[
     check('id').custom(existeGrupoByGbId), 
     validarCampos
 ],grupoBiblicoControllers.grupoBiblicoPutDesactivar);
+
+router.get('/uploadCloud/:id',[
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeGrupoByGbId),
+    validarCampos
+],grupoBiblicoControllers.traerImagenesCloud)
 
 export default router;

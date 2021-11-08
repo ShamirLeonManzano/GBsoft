@@ -1,4 +1,7 @@
 import GrupoBiblico from "../models/grupoBiblico.js";
+import cloudinary from 'cloudinary'
+
+cloudinary.config(process.env.CLOUDINARY_URL)
 
 const grupoBiblicoControllers = {
 
@@ -92,6 +95,43 @@ const grupoBiblicoControllers = {
         res.json({
             grupoBiblico
         })
+    },
+
+    cargarArchivoCloud: async (req,res) => {
+        const {id} = req.params;
+        try{            
+            const {tempFilePath}=req.files.archivo 
+            const {secure_url} = await cloudinary.uploader.upload(tempFilePath)           
+            
+            let grupo = await GrupoBiblico.findById(id);  
+               
+            if(grupo.foto){
+                const nombreTemp=grupo.foto.split('/')
+                const nombreArchivo=nombreTemp[nombreTemp.length-1]
+                const [public_id] = nombreArchivo.split('.')
+                cloudinary.uploader.destroy(public_id)
+               
+            }
+            grupo = await GrupoBiblico.findByIdAndUpdate(id,{foto:secure_url})
+            res.json({secure_url});
+        }catch (error){
+            res.status(400).json(error)
+        } 
+    },
+
+    traerImagenesCloud: async (req,res) => {
+        const {id} = req.params;
+        try {
+            let grupo = await GrupoBiblico.findOne({_id:id});
+            if(grupo.foto){
+                return res.json({url:grupo.foto})
+
+            }
+            res.status(400).json({msg:'Falta Imagen'})
+            
+        } catch (error) {
+            res.status(400).json({error})
+        }
     },
 }
 

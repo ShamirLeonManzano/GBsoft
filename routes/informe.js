@@ -23,7 +23,7 @@ router.get('/:id',[
 router.get('/iDL/:id',[
     validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom(existeGbById),
+    // check('id').custom(existeGbById),
     validarCampos
 ],informeControllers.informeGetByIDL);  
 
