@@ -38,7 +38,7 @@ router.put('/:id',[
     check('codigo', 'El codigo es obligatorio').notEmpty(),
     check('iglesia', 'La iglesia es obligatoria').notEmpty(),
     check('felipeS', 'El felipeS es obligatorio').notEmpty(),
-    check('codigo').custom(existeRedByCodigo),
+    // check('codigo').custom(existeRedByCodigo),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeRedById),
     validarCampos

@@ -6,7 +6,7 @@ const grupobiblicoSchema = mongoose.Schema({
     direccion : {type: String, required:true, maxlength:50},
     telefono : {type: String, required:true, maxlength:50},
     estado : {type:Number, default:1},
-    red:{ type: mongoose.Schema.Types.ObjectId, ref: `Red`, require: true },
+    // red:{ type: mongoose.Schema.Types.ObjectId, ref: `Red`, require: true },
     subRed: { type: mongoose.Schema.Types.ObjectId, ref: `SubRed`, require: true },
     felipeG: { type: mongoose.Schema.Types.ObjectId, ref: `Usuario`, require: true },    
     foto:{type: String},   

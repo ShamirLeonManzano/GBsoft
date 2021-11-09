@@ -26,8 +26,7 @@ const grupoBiblicoControllers = {
     grupoBiblicoGetByIdSubR: async (req, res) => {
         const { id } = req.params;
         const grupoBiblico = await GrupoBiblico
-        .find({ subRed : id })
-        .populate('red','codigo')
+        .find({ subRed : id })        
         .populate('subRed','codigo')
         .populate('felipeG','nombre')
         .sort({ 'codigo': -1 })  
@@ -56,8 +55,8 @@ const grupoBiblicoControllers = {
     },
     
     grupoBiblicoPost: async (req, res) => {
-        const {titulo, codigo, direccion, felipeG,telefono,red, subRed} = req.body;
-        const grupo = GrupoBiblico({titulo, codigo, direccion,felipeG,telefono,red, subRed});
+        const {titulo, codigo, direccion, felipeG,telefono, subRed} = req.body;
+        const grupo = GrupoBiblico({titulo, codigo, direccion,felipeG,telefono,subRed});
 
         await grupo.save();
 

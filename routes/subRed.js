@@ -43,7 +43,7 @@ router.put('/:id',[
     check('red', 'El red es obligatorio').notEmpty(),
     check('felipeR', 'El felipe de Red es obligatorio').notEmpty(),
     check('titulo', 'El titulo es obligatorio').notEmpty(),
-    check('codigo').custom(existeSubRedByCodigo), 
+    // check('codigo').custom(existeSubRedByCodigo), 
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeSubRedById),
       
