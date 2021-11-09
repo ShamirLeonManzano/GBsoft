@@ -68,7 +68,7 @@ const usuarioControllers = {
 
     usuarioPut: async (req, res) => {
         const { id } = req.params
-        const { _id, createAt, estado, __v, email, rol, password, ...resto } = req.body
+        const { _id, createAt, estado, __v, password, ...resto } = req.body
 
         if (password) {
             const salt = bcryptjs.genSaltSync();
