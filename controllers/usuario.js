@@ -12,12 +12,12 @@ cloudinary.config(process.env.CLOUDINARY_URL)
 const usuarioControllers = {
 
     usuarioGet: async (req, res) => {
-        const query = req.query.value
+        const value = req.query.value
+        console.log(value);
         const usuarios = await Usuario.find({
             $or: [
-                { nombre: new RegExp(query, 'i') },
-                { email: new RegExp(query, 'i') },
-                { rol: new RegExp(query, 'i') }
+                { rol: new RegExp(value, 'i') },
+                { nombre: new RegExp(value, 'i') }
             ]
         });
 
