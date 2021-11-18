@@ -22,6 +22,7 @@ router.get('/:id',[
 router.post('/',[
     validarJWT,
     check('codigo', 'El codigo es obligatorio').notEmpty(),
+    check('titulo', 'El titulo es obligatorio').notEmpty(),
     check('codigo').custom(existeIglesiaByCod),
     validarCampos
 ],iglesiaControllers.iglesiaPost);
@@ -48,5 +49,19 @@ router.put('/desactivar/:id',[
     check('id').custom(existeIglesiaById),
     validarCampos
 ],iglesiaControllers.iglesiaPutDesactivar);
+
+router.post('/uploadCloud/:id',[
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeIglesiaById),
+    validarCampos
+],iglesiaControllers.cargarArchivoCloud);
+
+router.get('/uploadCloud/:id',[
+    validarJWT,
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom(existeIglesiaById),
+    validarCampos
+],iglesiaControllers.traerImagenesCloud)
 
 export default router;
