@@ -56,20 +56,30 @@ const perDirectorioControllers = {
         })
     },
 
-    perDirectorioPutActivar: async (req, res) => {
+    // perDirectorioPutActivar: async (req, res) => {
+    //     const { id } = req.params
+
+    //     const directorio = await Directorio.findByIdAndUpdate(id, { estado: 1 })
+
+    //     res.json({
+    //         directorio
+    //     })
+    // },
+
+    // perDirectorioPutDesactivar: async (req, res) => {
+    //     const { id } = req.params
+
+    //     const directorio = await Directorio.findByIdAndUpdate(id, { estado: 0 })
+
+    //     res.json({
+    //         directorio
+    //     })
+    // },
+
+    perDirectorioDelete: async (req, res) => {
         const { id } = req.params
 
-        const directorio = await Directorio.findByIdAndUpdate(id, { estado: 1 })
-
-        res.json({
-            directorio
-        })
-    },
-
-    perDirectorioPutDesactivar: async (req, res) => {
-        const { id } = req.params
-
-        const directorio = await Directorio.findByIdAndUpdate(id, { estado: 0 })
+        const directorio = await Directorio.findByIdAndDelete(id)
 
         res.json({
             directorio

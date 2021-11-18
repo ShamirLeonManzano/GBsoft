@@ -50,18 +50,25 @@ router.put('/:id',[
     validarCampos
 ],perDirectorioControllers.perDirectorioPut);
 
-router.put('/activar/:id',[
-    validarJWT,
-    check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom(existeDirectorioByGbId),
-    validarCampos
-],perDirectorioControllers.perDirectorioPutActivar);
+// router.put('/activar/:id',[
+//     validarJWT,
+//     check('id', 'No es un ID válido').isMongoId(),
+//     check('id').custom(existeDirectorioByGbId),
+//     validarCampos
+// ],perDirectorioControllers.perDirectorioPutActivar);
 
-router.put('/desactivar/:id',[
+// router.put('/desactivar/:id',[
+//     validarJWT,
+//     check('id', 'No es un ID válido').isMongoId(),
+//     check('id').custom(existeDirectorioByGbId),
+//     validarCampos
+// ],perDirectorioControllers.perDirectorioPutDesactivar);
+
+router.delete('/delete/:id',[
     validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom(existeDirectorioByGbId),
+    check('id').custom(existeDirectorioById),
     validarCampos
-],perDirectorioControllers.perDirectorioPutDesactivar);
+],perDirectorioControllers.perDirectorioDelete);
 
 export default router;

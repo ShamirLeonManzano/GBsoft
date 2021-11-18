@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const directorioSchema = mongoose.Schema({
-    estado : {type:Number, default:1},
+    // estado : {type:Number, default:1},
     gBiblico: { type: mongoose.Schema.Types.ObjectId, ref: `GrupoBiblico`, require: true },
     nombre: {type: String, required: true, maxlength:50},
     cumpleaños: {type: String, required: true, maxlength:50},
