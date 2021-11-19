@@ -32,7 +32,6 @@ router.put('/:id',[
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(existeIglesiaById),
     check('codigo','El codigo es obligatorio').notEmpty(),
-    check('codigo').custom(existeIglesiaByCod),
     validarCampos
 ],iglesiaControllers.iglesiaPut);
 
